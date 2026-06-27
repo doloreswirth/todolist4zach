@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List 4 Zach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2b2118;
+    --paper: #fbf6ee;
+    --card: #ffffff;
+    --line: #e8ddcb;
+    --plum: #6b3d5b;
+    --rose: #c46a78;
+    --gold: #d99a3f;
+    --green: #6f8f5a;
+    --muted: #8a7d6b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 20px 80px;
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  header {
+    padding: 56px 0 32px;
+    border-bottom: 2px solid var(--line);
+    margin-bottom: 36px;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.05;
+    color: var(--plum);
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 540px;
+  }
+
+  .meta {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(107, 61, 91, 0.10);
+  }
+
+  .card .tag {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .tag.contribution { background: #f4e7d5; color: #9a6c25; }
+  .tag.errand  { background: #ece1ea; color: var(--plum); }
+  .tag.health  { background: #e4eedd; color: #4d6b39; }
+  .tag.money   { background: #f7e0e4; color: #a8475a; }
+  .tag.general { background: #eee7da; color: var(--muted); }
+
+  .card h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .card .due {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--rose);
+  }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .recipes {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 2px solid var(--line);
+  }
+
+  .recipes-head {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--plum);
+  }
+
+  .recipes-intro {
+    color: var(--muted);
+    margin: 6px 0 24px;
+  }
+
+  .recipe {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+
+  .recipe h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .recipe h4 span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--rose);
+    white-space: nowrap;
+  }
+
+  .recipe .ing {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 10px 0 14px;
+    line-height: 1.6;
+  }
+
+  .recipe ol {
+    padding-left: 20px;
+    font-size: 0.92rem;
+  }
+
+  .recipe ol li { margin-bottom: 5px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow" id="weekLabel"></div>
+      <h1>To-Do List 4 Zach</h1>
+      <p class="subtitle">A loving, slightly nagging list of things to get done this week. Made with care (and a domain name) by Mom.</p>
+      <p class="meta" id="count"></p>
+    </header>
+
+    <main class="grid" id="cards"></main>
+
+    <section class="recipes">
+      <h3 class="recipes-head">The 3 meals (for prep)</h3>
+      <p class="recipes-intro">Check the pantry against these, then shop for what's missing. Each makes 4 servings.</p>
+
+      <article class="recipe">
+        <h4>Chicken Tikka Masala <span>~45 min</span></h4>
+        <p class="ing"><strong>Need:</strong> 1.5 lb chicken thighs &middot; &frac12; cup plain yogurt &middot; 4 garlic cloves &middot; 1 tbsp ginger &middot; 2 tbsp garam masala &middot; 1 tsp cumin &middot; 1 tbsp paprika &middot; 2 tbsp oil &middot; 1 onion &middot; 1&frac34; cup tomato puree &middot; &frac34; cup heavy cream &middot; 1 tsp salt &middot; rice or naan to serve</p>
+        <ol>
+          <li>Marinate chicken in yogurt, half the garlic, ginger, 1 tbsp garam masala, paprika.</li>
+          <li>Sear chicken in oil until browned (~6 min); set aside.</li>
+          <li>Cook onion with remaining garlic, ginger, cumin, 1 tbsp garam masala until soft.</li>
+          <li>Add tomato puree + salt, simmer 10 min, stir in cream and chicken, simmer through.</li>
+        </ol>
+      </article>
+
+      <article class="recipe">
+        <h4>Shrimp Scampi <span>~25 min</span></h4>
+        <p class="ing"><strong>Need:</strong> 12 oz linguine &middot; 1 lb shrimp (peeled) &middot; 3 tbsp butter &middot; 2 tbsp olive oil &middot; 5 garlic cloves &middot; &frac14; tsp red pepper flakes &middot; &frac12; cup white wine &middot; 1 lemon &middot; &frac12; tsp salt &middot; &frac14; cup parsley</p>
+        <ol>
+          <li>Cook pasta until al dente; save a splash of pasta water.</li>
+          <li>Heat oil + 1 tbsp butter, cook shrimp 2 min per side; remove.</li>
+          <li>Cook garlic + pepper flakes 30 sec, add wine, reduce by half.</li>
+          <li>Stir in remaining butter, lemon, salt. Toss with pasta, shrimp, parsley.</li>
+        </ol>
+      </article>
+
+      <article class="recipe">
+        <h4>Beef &amp; Broccoli Stir-Fry <span>~30 min</span></h4>
+        <p class="ing"><strong>Need:</strong> 1 lb flank steak &middot; 6 cups broccoli &middot; 3 tbsp soy sauce &middot; 1 tbsp cornstarch &middot; 2 tbsp oil &middot; 4 garlic cloves &middot; 1 tbsp ginger &middot; 2 tbsp oyster sauce &middot; 1 tbsp brown sugar &middot; &frac12; cup broth &middot; 1 tsp sesame oil &middot; rice to serve</p>
+        <ol>
+          <li>Toss sliced beef with 1 tbsp soy sauce + cornstarch.</li>
+          <li>Steam or blanch broccoli ~3 min; set aside.</li>
+          <li>Stir-fry beef in oil ~3 min; remove.</li>
+          <li>Cook garlic + ginger 30 sec, add oyster sauce, sugar, remaining soy, broth; simmer to thicken.</li>
+          <li>Return beef + broccoli, toss, finish with sesame oil.</li>
+        </ol>
+      </article>
+    </section>
+
+    <footer>
+      Updated weekly &middot; todolist4zach.com
+    </footer>
+  </div>
+
+<script>
+  // =====================================================================
+  //  ADD A NEW TASK EACH WEEK BY ADDING A LINE TO THIS LIST.
+  //  Each task has 4 parts:
+  //    title   - the short name of the task
+  //    detail  - a sentence of explanation (optional, can be "")
+  //    due     - when it's due (e.g. "By Friday")
+  //    tag     - one of: "contribution", "errand", "health", "money", "general"
+  //  Copy a line, change the words, done. Delete a line to remove a task.
+  // =====================================================================
+  const tasks = [
+    {
+      title: "Meal prep: 3 meals",
+      detail: "Check what we already have first, then buy only what's missing. The three recipes with the full ingredient lists are below.",
+      due: "This week",
+      tag: "contribution"
+    },
+    {
+      title: "Get the dental films",
+      detail: "Pick up the x-ray films from the dentist, then email them to Mom.",
+      due: "This week",
+      tag: "health"
+    },
+    {
+      title: "Clean the downstairs bathroom",
+      detail: "The whole thing. Yes, including the mirror.",
+      due: "This week",
+      tag: "contribution"
+    }
+  ];
+
+  // ---- The code below builds the cards. You don't need to edit it. ----
+
+  // Show the current week automatically (Monday of this week).
+  const now = new Date();
+  const monday = new Date(now);
+  const day = (now.getDay() + 6) % 7; // days since Monday (Mon=0 ... Sun=6)
+  monday.setDate(now.getDate() - day);
+  document.getElementById("weekLabel").textContent =
+    "Week of " + monday.toLocaleDateString("en-US",
+      { month: "long", day: "numeric", year: "numeric" });
+
+  const grid = document.getElementById("cards");
+  tasks.forEach(t => {
+    const card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML = `
+      <span class="tag ${t.tag}">${t.tag}</span>
+      <h2>${t.title}</h2>
+      ${t.detail ? `<p>${t.detail}</p>` : ""}
+      <span class="due">${t.due}</span>
+    `;
+    grid.appendChild(card);
+  });
+
+  const n = tasks.length;
+  document.getElementById("count").textContent =
+    `${n} task${n === 1 ? "" : "s"} this week. You've got this.`;
+</script>
+</body>
+</html>
