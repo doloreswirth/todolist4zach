@@ -107,6 +107,69 @@
   .tag.health  { background: #e4eedd; color: #4d6b39; }
   .tag.money   { background: #f7e0e4; color: #a8475a; }
   .tag.general { background: #eee7da; color: var(--muted); }
+  .tag.training { background: #dfeaf0; color: #2f5d73; }
+
+  .rhythm {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .rhythm div {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .rhythm strong {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  .rhythm .day {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--rose);
+  }
+
+  .recipe ul {
+    list-style: none;
+    font-size: 0.92rem;
+    margin-top: 10px;
+    display: grid;
+    gap: 4px;
+  }
+
+  .recipe ul b { color: var(--plum); }
+
+  .recipe .quote {
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .recipe.light { background: #f3f7f8; }
+  .recipe.peak { background: #fbefe6; }
+
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .notes .recipe { margin-bottom: 0; }
+  .notes ul { list-style: disc; padding-left: 18px; }
+  .notes a { color: var(--plum); font-weight: 600; }
 
   .card h2 {
     font-family: 'Fraunces', Georgia, serif;
@@ -205,7 +268,7 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="eyebrow">Summer 2026</div>
+      <div class="eyebrow">Fall 2026 &middot; W Trek Training</div>
       <h1>To-Do List 4 Zach</h1>
       <p class="subtitle">A loving, slightly nagging list of things to get done this week. Made with care (and a domain name) by Mom.</p>
       <p class="meta" id="count"></p>
@@ -214,42 +277,127 @@
     <main class="grid" id="cards"></main>
 
     <section class="recipes">
-      <h3 class="recipes-head">The 3 meals (for prep)</h3>
-      <p class="recipes-intro">Check the pantry against these, then shop for what's missing. Each makes 4 servings.</p>
+      <h3 class="recipes-head">The 8-week W Trek plan</h3>
+      <p class="recipes-intro">Oct 19 &ndash; Dec 13. Three sessions a week, no gym needed. Torres del Paine: Dec 30 &ndash; Jan 3.</p>
+
+      <div class="rhythm">
+        <div><span class="day">Mon</span><strong>Rest</strong>Campus stairs only</div>
+        <div><span class="day">Tue</span><strong>Stairs</strong>Pack on, walk down every flight</div>
+        <div><span class="day">Wed</span><strong>Strength</strong>20 min in your room</div>
+        <div><span class="day">Thu</span><strong>Stairs</strong>Same as Tuesday</div>
+        <div><span class="day">Fri</span><strong>Rest</strong>Pack the bag</div>
+        <div><span class="day">Sat</span><strong>Long walk</strong>Trek boots + pack</div>
+        <div><span class="day">Sun</span><strong>Rest</strong>Week 7: second walk</div>
+      </div>
 
       <article class="recipe">
-        <h4>Chicken Tikka Masala <span>~45 min</span></h4>
-        <p class="ing"><strong>Need:</strong> 1.5 lb chicken thighs &middot; &frac12; cup plain yogurt &middot; 4 garlic cloves &middot; 1 tbsp ginger &middot; 2 tbsp garam masala &middot; 1 tsp cumin &middot; 1 tbsp paprika &middot; 2 tbsp oil &middot; 1 onion &middot; 1&frac34; cup tomato puree &middot; &frac34; cup heavy cream &middot; 1 tsp salt &middot; rice or naan to serve</p>
-        <ol>
-          <li>Marinate chicken in yogurt, half the garlic, ginger, 1 tbsp garam masala, paprika.</li>
-          <li>Sear chicken in oil until browned (~6 min); set aside.</li>
-          <li>Cook onion with remaining garlic, ginger, cumin, 1 tbsp garam masala until soft.</li>
-          <li>Add tomato puree + salt, simmer 10 min, stir in cream and chicken, simmer through.</li>
-        </ol>
+        <h4>Week 1 &middot; Oct 19&ndash;25 <span>Start the habit</span></h4>
+        <ul>
+          <li><b>Stairs:</b> 20 min, no pack</li>
+          <li><b>Strength:</b> 2 sets of 10</li>
+          <li><b>Saturday:</b> 90 min walk in the trek boots</li>
+        </ul>
+        <p class="quote">&ldquo;Well begun is half done.&rdquo; &mdash; Aristotle</p>
       </article>
 
       <article class="recipe">
-        <h4>Shrimp Scampi <span>~25 min</span></h4>
-        <p class="ing"><strong>Need:</strong> 12 oz linguine &middot; 1 lb shrimp (peeled) &middot; 3 tbsp butter &middot; 2 tbsp olive oil &middot; 5 garlic cloves &middot; &frac14; tsp red pepper flakes &middot; &frac12; cup white wine &middot; 1 lemon &middot; &frac12; tsp salt &middot; &frac14; cup parsley</p>
-        <ol>
-          <li>Cook pasta until al dente; save a splash of pasta water.</li>
-          <li>Heat oil + 1 tbsp butter, cook shrimp 2 min per side; remove.</li>
-          <li>Cook garlic + pepper flakes 30 sec, add wine, reduce by half.</li>
-          <li>Stir in remaining butter, lemon, salt. Toss with pasta, shrimp, parsley.</li>
-        </ol>
+        <h4>Week 2 &middot; Oct 26&ndash;Nov 1 <span>Get used to the pack</span></h4>
+        <ul>
+          <li><b>Stairs:</b> 25 min, 10 lb</li>
+          <li><b>Strength:</b> 2 sets of 12</li>
+          <li><b>Saturday:</b> 2 hours, 10 lb</li>
+        </ul>
+        <p class="quote">&ldquo;Paso a paso se va lejos.&rdquo; Step by step, you go far. &mdash; Dicho</p>
       </article>
 
       <article class="recipe">
-        <h4>Beef &amp; Broccoli Stir-Fry <span>~30 min</span></h4>
-        <p class="ing"><strong>Need:</strong> 1 lb flank steak &middot; 6 cups broccoli &middot; 3 tbsp soy sauce &middot; 1 tbsp cornstarch &middot; 2 tbsp oil &middot; 4 garlic cloves &middot; 1 tbsp ginger &middot; 2 tbsp oyster sauce &middot; 1 tbsp brown sugar &middot; &frac12; cup broth &middot; 1 tsp sesame oil &middot; rice to serve</p>
-        <ol>
-          <li>Toss sliced beef with 1 tbsp soy sauce + cornstarch.</li>
-          <li>Steam or blanch broccoli ~3 min; set aside.</li>
-          <li>Stir-fry beef in oil ~3 min; remove.</li>
-          <li>Cook garlic + ginger 30 sec, add oyster sauce, sugar, remaining soy, broth; simmer to thicken.</li>
-          <li>Return beef + broccoli, toss, finish with sesame oil.</li>
-        </ol>
+        <h4>Week 3 &middot; Nov 2&ndash;8 <span>First real hills</span></h4>
+        <ul>
+          <li><b>Stairs:</b> 25 min, 10 lb</li>
+          <li><b>Strength:</b> 3 sets of 10</li>
+          <li><b>Saturday:</b> 2 hours, 10 lb, Blue Hills Skyline. Steady up, careful down.</li>
+        </ul>
+        <p class="quote">&ldquo;The best way out is always through.&rdquo; &mdash; Robert Frost</p>
       </article>
+
+      <article class="recipe">
+        <h4>Week 4 &middot; Nov 9&ndash;15 <span>Go longer</span></h4>
+        <ul>
+          <li><b>Stairs:</b> 30 min, 12 lb</li>
+          <li><b>Strength:</b> 3 sets of 10, holding the pack</li>
+          <li><b>Saturday:</b> 2.5 hours, 12 lb, Middlesex Fells. Eat something every hour.</li>
+        </ul>
+        <p class="quote">&ldquo;Walking is the best possible exercise.&rdquo; &mdash; Thomas Jefferson</p>
+      </article>
+
+      <article class="recipe light">
+        <h4>Week 5 &middot; Nov 16&ndash;22 <span>Recovery week</span></h4>
+        <ul>
+          <li><b>Stairs:</b> 20 min, 10 lb</li>
+          <li><b>Strength:</b> 2 sets of 10</li>
+          <li><b>Saturday:</b> 90 min, 10 lb</li>
+        </ul>
+        <p class="quote">&ldquo;Slow and steady wins the race.&rdquo; &mdash; Aesop</p>
+      </article>
+
+      <article class="recipe">
+        <h4>Week 6 &middot; Nov 23&ndash;29 <span>Build to 3 hours</span></h4>
+        <ul>
+          <li><b>Stairs:</b> 30 min, 15 lb</li>
+          <li><b>Strength:</b> 3 sets of 8, holding the pack</li>
+          <li><b>Saturday:</b> 3 hours, 15 lb. Home for Thanksgiving? Join the family on Dreaded Hill.</li>
+        </ul>
+        <p class="quote">&ldquo;S&iacute; se puede.&rdquo; Yes, it can be done. &mdash; Dolores Huerta</p>
+      </article>
+
+      <article class="recipe peak">
+        <h4>Week 7 &middot; Nov 30&ndash;Dec 6 <span>Peak weekend</span></h4>
+        <ul>
+          <li><b>Stairs:</b> 30 min, 15 lb</li>
+          <li><b>Strength:</b> 3 sets of 8, holding the pack</li>
+          <li><b>Saturday:</b> 3 hours, 15 lb. <b>Sunday:</b> 90 min, 10 lb. Two days in a row, like the trek.</li>
+        </ul>
+        <p class="quote">&ldquo;Going to the mountains is going home.&rdquo; &mdash; John Muir</p>
+      </article>
+
+      <article class="recipe light">
+        <h4>Week 8 &middot; Dec 7&ndash;13 <span>Taper during finals</span></h4>
+        <ul>
+          <li><b>Stairs:</b> once, 20 min, 10 lb</li>
+          <li><b>Strength:</b> 2 sets, light</li>
+          <li><b>Saturday:</b> 1 hour, easy, in boots. Rest is training now.</li>
+        </ul>
+        <p class="quote">&ldquo;To travel hopefully is a better thing than to arrive.&rdquo; &mdash; Robert Louis Stevenson</p>
+      </article>
+
+      <div class="notes">
+        <article class="recipe">
+          <h4>Strength &middot; 20 min</h4>
+          <ul>
+            <li>Squats</li>
+            <li>Step-ups on a chair or stair</li>
+            <li>Reverse lunges</li>
+            <li>Single-leg deadlifts</li>
+            <li>Plank, 30&ndash;45 sec</li>
+          </ul>
+        </article>
+        <article class="recipe">
+          <h4>Boston trails</h4>
+          <ul>
+            <li><a href="https://www.alltrails.com/trail/us/massachusetts/great-blue-hill-via-skyline-trail">Blue Hills: Great Blue Hill via Skyline</a></li>
+            <li><a href="https://www.alltrails.com/trail/us/massachusetts/skyline-outer-reservoir-loop">Middlesex Fells: Skyline Outer Reservoir Loop</a></li>
+          </ul>
+        </article>
+        <article class="recipe">
+          <h4>Rules</h4>
+          <ul>
+            <li>Every long walk in the trek boots.</li>
+            <li>Walk down the stairs &mdash; descents are the hard part.</li>
+            <li>Icy trail? Do the long walk on city streets with the pack.</li>
+            <li>Missed a session? Skip it, don&rsquo;t double up.</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
     <footer>
@@ -264,33 +412,39 @@
   //    title   - the short name of the task
   //    detail  - a sentence of explanation (optional, can be "")
   //    due     - when it's due (e.g. "By Friday")
-  //    tag     - one of: "contribution", "errand", "health", "money", "general"
+  //    tag     - one of: "contribution", "errand", "health", "money", "general", "training"
   //  Copy a line, change the words, done. Delete a line to remove a task.
   // =====================================================================
   const tasks = [
     {
-      title: "Meal prep: 3 meals",
-      detail: "Check what we already have first, then buy only what's missing. The three recipes with the full ingredient lists are below.",
+      title: "Get your trek boots on your feet",
+      detail: "If you don't have boots yet, buy them this week. Wear them around campus so they're broken in long before Patagonia.",
       due: "This week",
-      tag: "contribution"
+      tag: "errand"
     },
     {
-      title: "Get the dental films",
-      detail: "Pick up the x-ray films from the dentist, then email them to Mom.",
-      due: "This week",
-      tag: "health"
+      title: "Stairs: 20 minutes",
+      detail: "Climb steadily, then walk down every flight. No pack yet.",
+      due: "Tue Oct 20",
+      tag: "training"
     },
     {
-      title: "Clean the downstairs bathroom",
-      detail: "The whole thing. Yes, including the mirror.",
-      due: "This week",
-      tag: "contribution"
+      title: "Strength: 20 minutes",
+      detail: "Squats, step-ups, reverse lunges, single-leg deadlifts, plank. 2 sets of 10. The moves are listed below.",
+      due: "Wed Oct 21",
+      tag: "training"
     },
     {
-      title: "Decorate the front for the 4th",
-      detail: "Meet Mom to do this. Early start so it's not blazing hot \u2014 please.",
-      due: "Mon June 29, 9am",
-      tag: "general"
+      title: "Stairs: 20 minutes",
+      detail: "Same as Tuesday.",
+      due: "Thu Oct 22",
+      tag: "training"
+    },
+    {
+      title: "Long walk: 90 minutes",
+      detail: "City streets or a park, wearing the trek boots.",
+      due: "Sat Oct 24",
+      tag: "training"
     }
   ];
 
